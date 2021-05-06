@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "strict": true,
+    "lib": ["es2020"],
+    "target": "ES5",
+    "esModuleInterop": true
+  }
+}

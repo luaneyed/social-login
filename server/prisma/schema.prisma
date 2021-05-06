@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id              Int       @default(autoincrement()) @id
+  email           String
+  name            String
+  auth_provider   AuthProvider
+  auth_id         String    @db.VarChar(255)
+  created_at      DateTime  @default(now())
+
+  @@unique([auth_provider, auth_id], name: "auth")
+}
+
+enum AuthProvider {
+  Google
+  Facebook
+}
